@@ -53,15 +53,15 @@ export default function Form(props) {
   return (
     <>
         <div className='container' style={{color: props.mode==="dark"?"white":"#042743" }} >
-            <h3 >{props.heading}</h3>
+            <h3 className='mb-3' >{props.heading}</h3>
             <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==="dark"?"grey":"white", color: props.mode==="dark"?"white":"#042743" }} id="myBox" rows="10"></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==="dark"?"rgb(36 74 104)":"white", color: props.mode==="dark"?"white":"#042743" }} id="myBox" rows="10"></textarea>
             </div>
-            <button className="btn btn-primary my-2" onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className="btn btn-primary my-2 mx-3" onClick={handleLowClick}>Convert to Lowercase</button>
-            <button className="btn btn-primary my-2 " onClick={handleClearClick}>Clear Text</button>
-            <button className="btn btn-primary my-2 mx-3 " onClick={onAlternatingCase}>convert to Alternating case</button>
-            <button className="btn btn-primary my-2" onClick={handleTitleCase}>convert to Title case</button>
+            <button disabled={text.length===0} className="btn btn-primary my-1 mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
+            <button disabled={text.length===0} className="btn btn-primary my-1 mx-1" onClick={handleLowClick}>Convert to Lowercase</button>
+            <button disabled={text.length===0} className="btn btn-primary my-1 mx-1" onClick={handleClearClick}>Clear Text</button>
+            <button disabled={text.length===0} className="btn btn-primary my-1 mx-1" onClick={onAlternatingCase}>convert to Alternating case</button>
+            <button disabled={text.length===0} className="btn btn-primary my-1 mx-1    " onClick={handleTitleCase}>convert to Title case</button>
 
 
 
@@ -69,7 +69,7 @@ export default function Form(props) {
         </div>
         <div className="container my-3" style={{color: props.mode==="dark"?"white":"#042743" }} >
             <h3>your text summary</h3>
-            <p>{text.split(' ').length} Words and {text.length} Characters & {0.008 * text.split(' ').length} Minutes read</p>
+            <p>{text.split(' ').filter((element)=>{return element.length!==0}).length} Words and {text.length} Characters & {0.008 * text.split(' ').filter((element)=>{return element.length!==0}).length} Minutes read</p>
         </div>
     </>
     
