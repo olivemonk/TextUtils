@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import PropTypes from 'prop-types'
 
 
 export default function Form(props) {
@@ -25,7 +24,7 @@ export default function Form(props) {
     const onAlternatingCase = () => {
         let newtext = ""
         for (let index = 0; index < text.length; index++) {
-            if ((index % 2) == 0) {
+            if ((index % 2) === 0) {
                 newtext += text[index].toLowerCase()
             }
             else {
